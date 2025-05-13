@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post  # Certifique-se de importar o modelo
+from .models import Post  
 
 def blog(request):
 
