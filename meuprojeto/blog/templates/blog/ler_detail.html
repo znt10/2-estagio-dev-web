@@ -10,7 +10,7 @@
     <img src="{{ post_detalhe.capa.url }}" alt="{{ posts.titulo }}">
     <p>{{ post_detalhe.descricao }}</p>
     <a href="{% url 'postes' %}">Voltar</a>
-
+    <a href="{% url 'editar_post' post_detalhe.id %}">Editar</a>
 
 </body>
 </html>
