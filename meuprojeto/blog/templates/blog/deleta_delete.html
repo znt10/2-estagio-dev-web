@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmar Deleção</title>
+</head>
+<body>
+    <h1>Você tem certeza que deseja deletar este post?</h1>
+
+    <p><strong>{{ post_deletar.titulo }}</strong></p>
+    <p>{{ post_deletar.descricao }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, deletar</button>
+        <a href="{% url 'postes' %}">Cancelar</a>
+    </form>
+</body>
+</html>

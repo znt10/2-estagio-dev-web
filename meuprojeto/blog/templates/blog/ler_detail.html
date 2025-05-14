@@ -11,6 +11,8 @@
     <p>{{ post_detalhe.descricao }}</p>
     <a href="{% url 'postes' %}">Voltar</a>
     <a href="{% url 'editar_post' post_detalhe.id %}">Editar</a>
+    <a href="{% url 'deletar_post' post_detalhe.id %}">Deletar</a>
+
 
 </body>
 </html>
