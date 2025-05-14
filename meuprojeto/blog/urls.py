@@ -9,3 +9,4 @@ urlpatterns = [
     path('/<int:pk>/deletar', Post_UpdateView.as_view(), name='deletar_post')
 ]
 
+
