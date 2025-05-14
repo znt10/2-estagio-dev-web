@@ -8,6 +8,18 @@ class Post_ver(ListView):
     template_name = 'blog/teste.html'
     context_object_name = 'posts'
     paginate_by = 6
+    def get_queryset(self, *args, **kwargs):
+        queryset = Post.objects.all()
+    # Coletando Query Params
+        ordenar = self.request.GET.get('ordenar_por')
+        pesquisar = self.request.GET.get('q')
+
+        if pesquisar:
+            queryset = queryset.filter(titulo__icontains=pesquisar)
+# Aplicando ordenação
+        if ordenar:
+            queryset = queryset.order_by(ordenar)
+        return queryset
 
 class Post_DetailView(DetailView):
     model = Post
