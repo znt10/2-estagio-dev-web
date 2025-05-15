@@ -39,12 +39,11 @@
             <div class="d-flex justify-content-center gap-3 flex-nowrap">
                 
             <img src="{{ post_detalhe.capa.url }}" class="img-capa rounded" alt="Capa de {{ post_detalhe.titulo }}">
-            <img src="{{ post_detalhe.capas_extras.url }}" class="img-capa rounded" alt="Capa extra de {{ post_detalhe.titulo }}">
         </div>
             {% else %}
             <div class="d-flex justify-content-center gap-3 flex-nowrap">
                 <img src="{% static 'img/sem_capa.jpg' %}" class="img-capa rounded" alt="Sem capa disponível">
-                <img src="{% static 'img/sem_capa.jpg' %}" class="img-capa rounded" alt="Sem capa disponível">
+
         </div>
             {% endif %}
 

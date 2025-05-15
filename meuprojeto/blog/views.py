@@ -29,7 +29,7 @@ class Post_DetailView(DetailView):
 class Post_CreateView(CreateView):
     model = Post
     template_name = 'blog/criar_Create.html'
-    fields = ['titulo', 'descricao', 'capa', 'capa_extra']  
+    fields = ['titulo', 'descricao', 'capa']  
     success_url = reverse_lazy('postes')
     def form_valid(self, form):
         form.instance.autor = self.request.user
@@ -38,7 +38,7 @@ class Post_CreateView(CreateView):
 class Post_UpdateView(UpdateView):
     model = Post
     template_name = 'blog/editar_Update.html'
-    fields = ['titulo', 'descricao', 'capa', 'capa_extra'] 
+    fields = ['titulo', 'descricao', 'capa'] 
     success_url = reverse_lazy('postes')
 
 class Post_DeleteView(DeleteView):
