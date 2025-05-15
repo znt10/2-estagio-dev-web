@@ -17,8 +17,11 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     
-    <!-- Seu CSS personalizado -->
+    <!-- meu CSS -->
     <link rel="stylesheet" href="{% static 'posts/estilo.css' %}">
+
+    <script src="{% static 'posts/script.js' %}"></script>
+
 </head>
 
 
@@ -34,19 +37,24 @@
     </nav>
 
     <!-- filtro -->
-    <form method="get" action="">
-    <input type="text" name="q" placeholder="Pesquisar por título" value="{{ request.GET.q }}">
-    
-    <label for="ordenar">Ordenar por:</label>
-    <select name="ordenar_por" id="ordenar">
-        <option value="">Escolha...</option>
-        <option value="titulo" {% if request.GET.ordenar_por == "titulo" %}selected{% endif %}>Título A-Z</option>
-        <option value="-titulo" {% if request.GET.ordenar_por == "-titulo" %}selected{% endif %}>Título Z-A</option>
-        <option value="data_criacao" {% if request.GET.ordenar_por == "data_criacao" %}selected{% endif %}>Mais antigo</option>
-        <option value="-data_criacao" {% if request.GET.ordenar_por == "-data_criacao" %}selected{% endif %}>Mais recente</option>
-    </select>
+    <form method="get" action="" class="row g-2 float-start">
+        <div class="col-md-5">
+            <input type="text" name="q" class="form-control float-start" placeholder="Pesquisar por título" value="{{ request.GET.q }}">
+    </div>
 
-        <button type="submit">Buscar</button>
+    <div class="col-md-4">
+        <select name="ordenar_por" id="ordenar" class="form-select float-start">
+            <option value="">Ordenar por...</option>
+            <option value="titulo" {% if request.GET.ordenar_por == "titulo" %}selected{% endif %}>Título A-Z</option>
+            <option value="-titulo" {% if request.GET.ordenar_por == "-titulo" %}selected{% endif %}>Título Z-A</option>
+            <option value="data_criacao" {% if request.GET.ordenar_por == "data_criacao" %}selected{% endif %}>Mais antigo</option>
+            <option value="-data_criacao" {% if request.GET.ordenar_por == "-data_criacao" %}selected{% endif %}>Mais recente</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <button type="submit" class="btn btn-primary float-start-0">Buscar</button>
+        </div>
     </form>
 
 
@@ -112,6 +120,29 @@
 
                     </div>
                 </div>
+            </div>
+            <!-- Carousel de Comentários -->
+                <div id="carouselComentarios" class="carousel slide mt-4" data-bs-ride="carousel">
+                <div class="carousel-inner" id="comentariosContainer">
+            <!-- Comentários serão inseridos aqui dinamicamente -->
+                </div>
+                
+            <!-- Controles do Carousel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselComentarios" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselComentarios" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                
+            <!-- Formulário para adicionar comentários -->
+                <div class="mt-4">
+                    <input type="text" id="novoComentario" class="form-control mb-2" placeholder="Digite seu comentário">
+                    <input type="text" id="novoAutor" class="form-control mb-2" placeholder="Seu nome">
+                    <button class="btn btn-primary" onclick="adicionarComentario()">Adicionar Comentário</button>
             </div>
         </div>
     </div>

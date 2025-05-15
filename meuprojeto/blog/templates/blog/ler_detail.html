@@ -17,15 +17,9 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" 
         rel="stylesheet"
     >
+    <link rel="stylesheet" href="{% static 'posts/estilo.css' %}">
 
-    <style>
-        .img-capa {
-            width: 100%;
-            max-width: 400px;
-            height: 400px;
-            object-fit: cover;
-        }
-    </style>
+
 </head>
 <body class="bg-info"
     style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px);
@@ -40,12 +34,21 @@
 
     <!-- Conteúdo principal -->
     <div class="container my-5">
-        <div class="card shadow-lg">
+        <div class="card shadow-lg p-3">
             {% if post_detalhe.capa %}
-                <img src="{{ post_detalhe.capa.url }}" class="img-capa mx-auto d-block my-3 rounded" alt="Capa de {{ post_detalhe.titulo }}">
+            <div class="d-flex justify-content-center gap-3 flex-nowrap">
+                
+            <img src="{{ post_detalhe.capa.url }}" class="img-capa rounded" alt="Capa de {{ post_detalhe.titulo }}">
+            <img src="{{ post_detalhe.capas_extras.url }}" class="img-capa rounded" alt="Capa extra de {{ post_detalhe.titulo }}">
+        </div>
             {% else %}
-                <img src="{% static 'img/sem_capa.jpg' %}" class="img-capa mx-auto d-block my-3 rounded" alt="Sem capa disponível">
+            <div class="d-flex justify-content-center gap-3 flex-nowrap">
+                <img src="{% static 'img/sem_capa.jpg' %}" class="img-capa rounded" alt="Sem capa disponível">
+                <img src="{% static 'img/sem_capa.jpg' %}" class="img-capa rounded" alt="Sem capa disponível">
+        </div>
             {% endif %}
+
+
             <div class="card-body">
                 <h2 class="card-title text-center">{{ post_detalhe.titulo }}</h2>
                 <p class="card-text mt-3">{{ post_detalhe.descricao }}</p>
